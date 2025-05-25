@@ -10,7 +10,6 @@ name: 'Execução Manual'
 on:
     workflow_dispatch:
 
-
 # trabalhos / tarefas dentro do pipeline = jobs 
 
 jobs:
