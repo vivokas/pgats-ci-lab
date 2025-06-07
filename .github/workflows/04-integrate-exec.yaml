@@ -70,7 +70,7 @@ jobs:
         if: ${{ always() }}
         with:
           path: ./playwright-report
-          
+
   deploy:
     runs-on: ubuntu-latest
 
