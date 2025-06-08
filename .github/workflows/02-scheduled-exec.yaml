@@ -9,7 +9,7 @@ name: 'Execução Agendada'
 #https://crontab.guru/
 on:
   schedule:
-    - cron: '0 16 * * *' # Executa todos os dias ao meio-dia UTC3.
+    - cron: '0 9 * * *' # Executa todos os dias a 6AM BRT (UTC-3)
 
 # trabalhos / tarefas dentro do pipeline = jobs
 
