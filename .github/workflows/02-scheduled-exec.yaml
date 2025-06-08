@@ -9,7 +9,7 @@ name: 'Execução Agendada'
 
 on:
   schedule:
-    - cron: '43 11 * * *' # Executa todos os dias às 11:42 UTC
+    - cron: '49 11 * * *' # Executa todos os dias às 11:42 UTC
     # Para testar, você pode usar 'cron: "*/5 * * * *"' para executar a cada 5 minutos
 
 # trabalhos / tarefas dentro do pipeline = jobs
