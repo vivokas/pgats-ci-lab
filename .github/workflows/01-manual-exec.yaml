@@ -21,6 +21,8 @@ jobs:
     steps:
       # clone do projeto
       - uses: actions/checkout@v4
+        with:
+          ref: main # ou a branch que você preferir
 
       #instalação do Node.js
       - uses: actions/setup-node@v4
