@@ -1,4 +1,4 @@
-# CI de Nivel 1 - Disparo manual a partir de 1 clique
+# CI de Nivel 2 - Disparo agendado
 
 # nome da 'pipeline'
 
@@ -9,8 +9,7 @@ name: 'Execução Agendada'
 
 on:
   schedule:
-    - cron: '54 11 * * *' # Executa todos os dias às 11:42 UTC
-    # Para testar, você pode usar 'cron: "*/5 * * * *"' para executar a cada 5 minutos
+    - cron: '0 15 8 6 *' # 12:00 BRT de 08/06/2025
 
 # trabalhos / tarefas dentro do pipeline = jobs
 
