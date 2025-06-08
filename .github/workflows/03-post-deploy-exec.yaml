@@ -1,29 +1,39 @@
-# CI de Nivel 2 - Disparo agendado
+# CI de Nivel 03 - Disparo após a conclusão de um pipeline
 
 # nome da 'pipeline'
 
-name: 'Execução Agendada'
+name: 'Execução por Deploy'
 
 # regras de disparo (gatilho / trigger)
 # gatilho do exec manual =  workflow_dispatch
-#https://crontab.guru/
+# gatilho do exec agendada =  schedule
+# gatilho do exec a partir de outro pipeline =  workflow_run
+
 on:
-  schedule:
-    - cron: '0 16 * * *' # Executa todos os dias ao meio-dia UTC3.
+  workflow_run:
+    workflows: ['Execução Manual']
+    types:
+      - completed
 
 # trabalhos / tarefas dentro do pipeline = jobs
 
 jobs:
   e2e-testes:
-    #maquina que o job vai executar
+    #maquina que ojob vai executar
     runs-on: ubuntu-latest
+
+    #condicional - if
+    #`$ { expressao }`
+    # ==comparação
+
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     #passos do script de build
     steps:
       # clone do projeto
       - uses: actions/checkout@v4
 
-      #Instalação do Node.js
+      #instalação do Node.js
       - uses: actions/setup-node@v4
         with:
           node-version: 22.x # ou a versão que você preferir
@@ -42,4 +52,11 @@ jobs:
 
       # executar os testes E2E
       - name: Executar os testes E2E
-        run: npm run e2e
+        run: yarn run e2e
+
+      - name: Upload de artefatos
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: relatorio
+          path: ./playwright-report/
