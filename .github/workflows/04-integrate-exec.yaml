@@ -1,6 +1,5 @@
 # CI de Nível 04 - Disparo de testes dentro da pipeline de dev
 
-
 name: 'Execução Integrada'
 
 on:
